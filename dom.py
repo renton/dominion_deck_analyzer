@@ -9,7 +9,9 @@ from cards import \
         CopperCard, \
         SilverCard, \
         GoldCard, \
+        GoldCard, \
         MilitiaCard, \
+        WorkshopCard, \
         WorkshopCard, \
         FestivalCard
 
@@ -64,6 +66,8 @@ deck = [
         CopperCard(),
         SilverCard(),
         GoldCard(),
+        EstateCard(),
+        SilverCard(),
 ]
 
 hand_combos = list(combinations(deck, 5))
@@ -120,6 +124,11 @@ def update_poss_data(play_data, poss_data, count=1):
         poss_data[play['poss_key']]['base_cnt'] += count
         poss_data[play['poss_key']]['cnt'] = poss_data[play['poss_key']]['base_cnt']
 
+
+
+#Dominion only optimal paths:
+#- Don’t count hand with actions and unused action points
+#- Don’t play terminal actions if there is still a non-terminal action
 
 def simulate_hand(
         hand,
